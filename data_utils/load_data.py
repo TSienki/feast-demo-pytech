@@ -35,7 +35,7 @@ def create_stats(con: Connection):
         player_id NVARCHAR(5),
         ts DATETIME2,
         win_loss_ratio FLOAT,
-        transactions INT,
+        games_played INT,
         time_in_game FLOAT
     )"""
     query = textwrap.dedent(query)
