@@ -42,7 +42,7 @@ def generate_stats(players_ts: DataFrame) -> DataFrame:
     """
     stats = players_ts.sample(frac=STATS_SAMPLE_FRAC).sort_index()
     stats["win_loss_ratio"] = np.random.uniform(0, 1, size=len(stats))
-    stats["games_played"] = np.round(np.random.pareto(2, size=len(stats)) * 100) + 1
+    stats["games_played"] = (np.round(np.random.pareto(2, size=len(stats)) * 100) + 1).astype(np.int32)
     stats["time_in_game"] = np.random.uniform(1, 3600, size=len(stats))
     logging.info(f"{len(stats)} stats rows generated")
     return stats
@@ -60,7 +60,7 @@ def generate_payments(players_ts: DataFrame) -> DataFrame:
         players_ts[players_ts["player_id"] != first_id].sample(frac=PAYMENTS_SAMPLE_FRAC).sort_index()
     ])
     payments["amount"] = np.round(np.random.uniform(10, 1000, size=len(payments)), 2)
-    payments["transactions"] = np.round(np.random.uniform(1, 10, size=len(payments)), 0)
+    payments["transactions"] = np.round(np.random.uniform(1, 10, size=len(payments)), 0).astype(np.int32)
     logging.info(f"{len(payments)} payments rows generated")
     return payments
 
