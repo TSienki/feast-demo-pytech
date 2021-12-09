@@ -57,16 +57,6 @@ CREATE TABLE dbo.payments (
     transactions INT
 )
 ``` 
-Creating payments table:
-```
-CREATE TABLE dbo.payments (
-    event_id INT,
-    player_id NVARCHAR(5),
-    ts DATETIME2,
-    amount FLOAT,
-    transactions INT
-)
-``` 
 Creating stats table:
 ```
 CREATE TABLE dbo.stats (
